@@ -17,7 +17,17 @@ public class Queue {
      * @param pInhalt
      */
     public void enqueue(String pInhalt){
-        //ToDo implement
+        Node tmp = first;
+        if(pInhalt != null){
+            if(first == null){
+                first = new Node(pInhalt);
+            }else{
+                while(tmp.getNext() != null){
+                    tmp = tmp.getNext();
+                }
+                tmp.setNext(new Node(pInhalt));
+            }
+        }
     }
 
     /**
@@ -26,11 +36,11 @@ public class Queue {
      * @return
      */
     public String dequeue(){
-            Node tmp = first;
-            if(!isEmpty()){
-                first = first.getNext();
-            }
-            return tmp.toString();
+        Node tmp = first;
+        if(!isEmpty()){
+            first = first.getNext();
+        }
+        return tmp.toString();
     }
 
     /**
@@ -40,8 +50,11 @@ public class Queue {
      * @return
      */
     public String front(){
-        //ToDo implement
-        return null;
+        if (first == null) {
+            return null;
+        }else{
+            return first.getInhalt();
+        }
     }
 
     /**
